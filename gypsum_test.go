@@ -5,6 +5,7 @@
 package gypsum
 
 import (
+	"strings"
 	"testing"
 )
 
@@ -31,6 +32,15 @@ func testingManyLorem(t *testing.T, i int) {
 		if line == "" {
 			t.Error("Shouldn't be an empty string.")
 			return
+		}
+	}
+}
+
+func TestWordLorem(t *testing.T) {
+	for i := 1; i < 100; i++ {
+		wordCount := len(strings.Split(WordLorem(i), " "))
+		if wordCount != i {
+			t.Errorf("Expected <%d> words, was <%d>\n", i, wordCount)
 		}
 	}
 }
